@@ -263,13 +263,46 @@ def get_movie(id):
 
         # TODO: Get Comments
         # Implement the required pipeline.
+        # pipeline = [
+        #     {
+        #         "$match": {
+        #             "_id": ObjectId(id)
+        #         }
+        #     }
+        # ]
         pipeline = [
-            {
-                "$match": {
-                    "_id": ObjectId(id)
+                {
+                    '$match': {
+                        "_id": ObjectId(id)
+                    }
+                }, {
+                    '$lookup': {
+                        'from': 'comments', 
+                        'let': {
+                            'id': '$_id'
+                        }, 
+                        'pipeline': [
+                            {
+                                '$match': {
+                                    '$expr': {
+                                        '$eq': [
+                                            '$movie_id', '$$id'
+                                        ]
+                                    }
+                                }
+                            },  
+                            { 
+                                '$project': { "_id": 0, "date": 1, "text": 1 } },
+                            {
+                                '$sort': {
+                                    'date': -1
+                                }
+                            }
+                        ], 
+                        'as': 'comments'
+                    }
                 }
-            }
-        ]
+            ]
 
         movie = db.movies.aggregate(pipeline).next()
         return movie

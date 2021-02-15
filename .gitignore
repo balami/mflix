@@ -141,3 +141,6 @@ dmypy.json
 
 #notebooks
 notebooks
+
+#intellij idea
+.idea

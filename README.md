@@ -6,15 +6,10 @@ This software project is part of the [course](https://university.mongodb.com/cou
 
 ## Summary
 
-  - [Getting Started](#getting-started)
-  - [Runing the tests](#running-the-tests)
-  - [Deployment](#deployment)
-  - [Built With](#built-with)
-  - [Contributing](#contributing)
-  - [Versioning](#versioning)
-  - [Authors](#authors)
+  - [Prerequisites](#prerequisites)
+  - [Installation](#installation)
+  - [Running the tests](#running-the-tests)
   - [License](#license)
-  - [Acknowledgments](#acknowledgments)
 
 ### Prerequisites
 
@@ -24,7 +19,7 @@ Get the Atlas SRV connection string like shown below, for the driver to connect 
     mongodb+srv://<username>:<password>@<cluster>/<dbname>
 
 
-### Installing
+### Installation
 
 Open the file [dotini_unix](dotini_unix) and replace the Atlas SRV connection string with yours. Also change your secret key and
 rename it as a .ini file.
